@@ -1,0 +1,31 @@
+@startuml
+
+hide empty members
+
+interface AnnotatedElement
+interface Member
+interface Type
+interface Member
+interface GenericDeclaration
+
+AnnotatedElement <|.. Class
+AnnotatedElement <|.. AccessibleObject
+AnnotatedElement <|.. Package
+AnnotatedElement <|.. Parameter
+AnnotatedElement <|-- GenericDeclaration
+
+Member <|.. Field
+Member <|.. Executable
+
+AccessibleObject <|-- Field
+AccessibleObject <|-- Executable
+
+GenericDeclaration <|.. Executable
+GenericDeclaration <|.. Class
+
+Executable <|-- Method
+Executable <|-- Constructor
+
+Type <|.. Class
+
+@enduml

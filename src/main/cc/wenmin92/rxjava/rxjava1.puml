@@ -1,0 +1,38 @@
+@startuml
+
+interface Observer<T> {
+    + onNext(T t):void
+    + onError(Throwable t):void
+    + onCompleted():void
+}
+interface Subscription {
+    + isUnsubscribed():boolean
+    + unsubscribe():void
+}
+abstract Subscriber {
+    + onNext(T t):void
+    + onError(Throwable t):void
+    + onCompleted():void
+    + isUnsubscribed():boolean
+    + unsubscribe():void
+}
+class Observable<T> {
+    - onSubscribe:OnSubscribe<T>
+    + subscribe(Subscriber<T> subscriber):Subscription
+    + subscribe(Observer<T> observer):Subscription
+}
+class OnSubscribe<T> {
+    + call(Subscriber<? super T> subscriber):void
+}
+hide empty fields
+
+Subscriber ..|> Observer
+Subscriber ..|> Subscription
+
+Observable *--> OnSubscribe
+Observable ..> Observer
+Observable ..> Subscriber
+
+OnSubscribe ..> Subscriber
+
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+
+interface ObservableSource<T> {
+    + subscribe(Observer<? super T> observer):void
+}
+abstract Observable<T> {
+    + subscribe(Observer<? super T> observer):void
+    + subscribeActual(Observer<? super T> observer):void
+}
+interface Observer<T> {
+    + onSubscribe(Disposable d):void
+    + onNext(T t):void
+    + onError(Throwable e):void
+    + onComplete():void
+}
+interface Disposable {
+    + dispose():void
+    + isDisposed():void
+}
+class ObservableCreate<T> {
+    + subscribeActual(Observer<? super T> observer):void
+}
+interface ObservableOnSubscribe<T> {
+    + subscribe(ObservableEmitter<T> emitter):void
+}
+interface Emitter<T> {
+    + onNext(T value):void
+    + onError(Throwable error):void
+    + onComplete():void
+}
+class CreateEmitter<T> {
+    + onNext(T value):void
+    + onError(Throwable error):void
+    + onComplete():void
+}
+interface ObservableEmitter<T> {
+    + setDisposable(Disposable d):void
+    + isDisposed():boolean
+}
+hide empty field
+
+Observable ..|> ObservableSource
+Observable ..> Observer
+Observer ..> Disposable
+
+ObservableCreate --|> Observable
+ObservableCreate *--> ObservableOnSubscribe
+
+ObservableOnSubscribe ..> CreateEmitter
+CreateEmitter *..> Observer
+CreateEmitter ..|> Disposable
+CreateEmitter ..|> ObservableEmitter
+ObservableEmitter ..|> Emitter
+
+note top of Observable : 1.观察得到的——被观察者，不支持背压\n2.通过Observable创建一个可观察的序列（create方法）\n3.通过subscribe去注册一个观察者
+note left of Observer : 1.用于接收数据——观察者\n2.作为Observable的subscribe方法的参数
+note left of Disposable : 1.和RxJava1的Subscription作用相当\n2.用于取消订阅和获取当前的订阅状态
+note top of ObservableOnSubscribe : 1.当订阅时会触发此接口调用\n2.在Observable内部，实际作用是向观察者发送数据
+note right of Emitter : 1.一个发射数据的接口，和Observer的方法类似\n2.本质是对Observable和Subscriber的包装
+
+@enduml

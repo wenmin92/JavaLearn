@@ -1,0 +1,55 @@
+@startuml
+
+abstract Flowable<T> {
+    + create(FlowableOnSubscribe<T> source, \n BackpressureStrategy mode):Observable
+    + subscribe(Subscriber<? super T> s):void
+    + subscribeActual(Subscriber<? super T> t):void
+}
+interface Publisher<T> {
+    + subscribe(Subscriber<? super T> s):void
+}
+interface FlowableOnSubscribe<T> {
+    + subscribe(FlowableEmitter<T> emitter):void
+}
+class FlowableCreate<T> {
+    ~ FlowableOnSubscribe<T> source
+    + subscribeActual(Subscriber<? super T> t):void
+}
+interface FlowableEmitter<T> {
+
+}
+interface Emitter<T> {
+    + onNext(T value):void
+    + onError(Throwable error):void
+    + onComplete():void
+}
+interface Subscriber<T> {
+    + onSubscribe(Subscription s):void
+    + onNext(T value):void
+    + onError(Throwable t):void
+    + onComplete():void
+}
+interface Subscription {
+    + request(long n):void
+    + cancel():void
+}
+abstract BaseEmitter<T> {
+
+}
+hide empty members
+
+Flowable ..|> Publisher
+Flowable ..> Subscriber
+Flowable ..> FlowableOnSubscribe
+FlowableCreate --|> Flowable
+FlowableCreate *--> FlowableOnSubscribe
+FlowableCreate ..> Subscriber
+FlowableCreate ..> BaseEmitter
+FlowableOnSubscribe ..> FlowableEmitter
+FlowableEmitter ..|> Emitter
+BaseEmitter ..|> FlowableEmitter
+BaseEmitter ..|> Subscription
+BaseEmitter *..> Subscriber
+Subscriber ..> Subscription
+
+@enduml
