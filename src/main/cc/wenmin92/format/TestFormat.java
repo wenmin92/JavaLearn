@@ -2,13 +2,19 @@ package cc.wenmin92.format;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TestFormat {
     public static void main(String[] args) {
         // stringFormat();
         // printFormat();
-        decimalFormat();
+        // decimalFormat();
+        // dateFormat();
+    }
+
+    private static void dateFormat() {
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
     }
 
     private static void stringFormat() {
