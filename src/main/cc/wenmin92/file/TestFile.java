@@ -1,13 +1,16 @@
 package cc.wenmin92.file;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class TestFile {
     public static void main(String[] args) {
         // outputTest();
-        inputTest();
+        // inputTest();
+        try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream("int.dat"))) {
+            dataOutputStream.writeUTF("中过");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void inputTest() {
