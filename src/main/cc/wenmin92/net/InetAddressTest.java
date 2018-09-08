@@ -6,12 +6,12 @@ import java.util.Arrays;
 
 public class InetAddressTest {
     public static void main(String[] args) {
-        // getByName();
-        //
-        // getLocal();
+        getByName();
 
-        ping(10, "http://bj3.unicomtest.com:80/speedtest/upload.php");
-        isReachable(10, "bj3.unicomtest.com");
+        getLocal();
+
+        // ping(10, "http://bj3.unicomtest.com:80/speedtest/upload.php");
+        // isReachable(10, "bj3.unicomtest.com");
 
         // getHostTest();
     }
@@ -95,11 +95,11 @@ public class InetAddressTest {
     private static void getLocal() {
         try {
             InetAddress localHost = InetAddress.getLocalHost();
-            System.out.println("getLocalHost:\n" + localHost);
+            System.out.println("getLocalHost: " + localHost);
 
             // 回送地址
             InetAddress loopbackAddress = InetAddress.getLoopbackAddress();
-            System.out.println("getLoopbackAddress:\n" + loopbackAddress);
+            System.out.println("getLoopbackAddress: " + loopbackAddress);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
@@ -108,10 +108,27 @@ public class InetAddressTest {
 
     private static void getByName() {
         try {
-            InetAddress address = InetAddress.getByName("www.wenmin92.cc");
-            System.out.println("getByName:\n" + address);
-            InetAddress[] addresses = InetAddress.getAllByName("www.wenmin92.cc");
-            System.out.println("getAllByName:\n" + Arrays.toString(addresses));
+            // getByName
+            InetAddress address0 = InetAddress.getByName("www.wenmin92.cc");
+            System.out.println("getByName: " + address0);
+
+            // getByName: 传入ip
+            InetAddress address1 = InetAddress.getByName("60.205.20.86");
+            System.out.println("getByName: " + address1);
+            System.out.println("getByName: " + address1.getHostName());
+
+            // getByName: 传入null
+            InetAddress address2 = InetAddress.getByName(null);
+            System.out.println("getByName: " + address2);
+
+            // getAllByName
+            InetAddress[] addresses = InetAddress.getAllByName("baidu.com");
+            System.out.println("getAllByName: " + Arrays.toString(addresses));
+
+            // 不与DNS交互
+            System.out.println("getByAddress: " + InetAddress.getByName("43.23.12.11"));
+            System.out.println("getByAddress: " + InetAddress.getByAddress("com", new byte[]{43, 23, 12, 11}));
+            System.out.println("getByAddress: " + InetAddress.getByAddress(new byte[]{43, 23, 12, 11}));
         } catch (UnknownHostException e) {
             System.out.println("Can't find \"www.wenmin92.cc\"");
             e.printStackTrace();
