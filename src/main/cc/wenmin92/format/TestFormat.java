@@ -10,11 +10,17 @@ public class TestFormat {
         // stringFormat();
         // printFormat();
         // decimalFormat();
-        // dateFormat();
+        dateFormat();
     }
 
     private static void dateFormat() {
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+
+        // 时区的使用，z,Z,X
+        // z, General time zone; Z, RFC 822 time zone; X, ISO 8601 time zone.
+        // z: CST, zzzz: China Standard Time
+        // X: +08，XX: +0800，XXX: +08:00
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSzzzz").format(new Date()));
     }
 
     private static void stringFormat() {
