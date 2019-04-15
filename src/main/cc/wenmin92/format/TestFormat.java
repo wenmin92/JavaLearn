@@ -78,7 +78,7 @@ public class TestFormat {
     private static void printParse(String method, Supplier<Date> parse) {
         String s;
         try {
-            s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSz").format(parse.get());
+            s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(parse.get());
         } catch (Exception e) {
             s = e.getMessage();
         }
