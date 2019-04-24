@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.io.Writer</OriginalElement>
+  <nodes>
+    <node x="175.0" y="250.0">java.io.PrintWriter</node>
+    <node x="714.0" y="250.0">java.io.BufferedWriter</node>
+    <node x="318.75" y="80.0">java.lang.Appendable</node>
+    <node x="859.0" y="250.0">java.io.FilterWriter</node>
+    <node x="583.0" y="250.0">java.io.StringWriter</node>
+    <node x="28.5" y="330.0">java.io.FileWriter</node>
+    <node x="430.0" y="250.0">java.io.CharArrayWriter</node>
+    <node x="155.75" y="-24.0">java.lang.AutoCloseable</node>
+    <node x="300.0" y="250.0">java.io.PipedWriter</node>
+    <node x="568.75" y="80.0">java.io.Closeable</node>
+    <node x="456.5" y="160.0">java.io.Writer</node>
+    <node x="0.0" y="250.0">java.io.OutputStreamWriter</node>
+    <node x="450.75" y="80.0">java.io.Flushable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.io.BufferedWriter" target="java.io.Writer">
+      <point x="0.0" y="-15.0" />
+      <point x="776.5" y="220.0" />
+      <point x="519.3571428571429" y="220.0" />
+      <point x="22.85714285714289" y="15.0" />
+    </edge>
+    <edge source="java.io.Writer" target="java.io.Flushable">
+      <point x="0.0" y="-15.0" />
+      <point x="496.5" y="135.0" />
+      <point x="499.75" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.io.FilterWriter" target="java.io.Writer">
+      <point x="0.0" y="-15.0" />
+      <point x="912.0" y="210.0" />
+      <point x="530.7857142857142" y="210.0" />
+      <point x="34.28571428571422" y="15.0" />
+    </edge>
+    <edge source="java.io.OutputStreamWriter" target="java.io.Writer">
+      <point x="0.0" y="-15.0" />
+      <point x="77.5" y="210.0" />
+      <point x="462.2142857142858" y="210.0" />
+      <point x="-34.28571428571428" y="15.0" />
+    </edge>
+    <edge source="java.io.CharArrayWriter" target="java.io.Writer">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.io.Writer" target="java.io.Closeable">
+      <point x="26.66666666666663" y="-15.0" />
+      <point x="523.1666666666666" y="135.0" />
+      <point x="618.25" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.io.StringWriter" target="java.io.Writer">
+      <point x="0.0" y="-15.0" />
+      <point x="638.5" y="230.0" />
+      <point x="507.92857142857144" y="230.0" />
+      <point x="11.428571428571445" y="15.0" />
+    </edge>
+    <edge source="java.io.FileWriter" target="java.io.OutputStreamWriter">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.io.PrintWriter" target="java.io.Writer">
+      <point x="0.0" y="-15.0" />
+      <point x="227.5" y="220.0" />
+      <point x="473.6428571428571" y="220.0" />
+      <point x="-22.85714285714289" y="15.0" />
+    </edge>
+    <edge source="java.io.PipedWriter" target="java.io.Writer">
+      <point x="0.0" y="-15.0" />
+      <point x="355.0" y="230.0" />
+      <point x="485.07142857142856" y="230.0" />
+      <point x="-11.428571428571445" y="15.0" />
+    </edge>
+    <edge source="java.io.Closeable" target="java.lang.AutoCloseable">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.io.Writer" target="java.lang.Appendable">
+      <point x="-26.666666666666686" y="-15.0" />
+      <point x="469.83333333333337" y="135.0" />
+      <point x="374.75" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="482.5" y="180.0" />
+  <SelectedNodes>
+    <node>java.lang.AutoCloseable</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>public</VISIBILITY>
+</Diagram>
+
